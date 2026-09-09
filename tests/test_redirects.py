@@ -22,4 +22,5 @@ class TestLogoRedirects:
         main_page.accept_cookies()
         main_page.click_yandex_logo()
         main_page.switch_to_new_tab()
-        assert main_page.wait_for_url_contains(Urls.DZEN_URL_PART)
+        main_page.wait_for_url_contains(Urls.DZEN_URL_PART)
+        assert Urls.DZEN_URL_PART in main_page.get_current_url()
