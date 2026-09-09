@@ -4,7 +4,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class BasePage:
-
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
@@ -46,3 +45,7 @@ class BasePage:
     @allure.step("Получить текущий URL")
     def get_current_url(self):
         return self.driver.current_url
+
+    @allure.step("Дождаться появления частичного URL: {url_part}")
+    def wait_for_url_contains(self, url_part):
+        return self.wait.until(EC.url_contains(url_part))

@@ -1,6 +1,4 @@
 import allure
-from selenium.webdriver.support.ui import WebDriverWait
-
 from data import Urls
 from pages.main_page import MainPage
 
@@ -24,5 +22,4 @@ class TestLogoRedirects:
         main_page.accept_cookies()
         main_page.click_yandex_logo()
         main_page.switch_to_new_tab()
-        WebDriverWait(driver, 10).until(lambda d: Urls.DZEN_URL_PART in d.current_url)
-        assert Urls.DZEN_URL_PART in driver.current_url
+        assert main_page.wait_for_url_contains(Urls.DZEN_URL_PART)
